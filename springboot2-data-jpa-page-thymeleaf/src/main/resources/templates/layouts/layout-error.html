@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">SpringBootThymeleaf</title>
+	<meta
+		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		name="viewport" />
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/main.css}"/>
+</head>
+<body>
+
+	<!--header.html  that's here  -->
+	<header>
+		<div th:replace="fragments/header-error :: header"></div>
+	</header>
+
+	<div layout:fragment="content">
+		<!-- Your Page Content Here -->
+	</div>
+	
+	<!--footer.html  that's here  -->
+	<footer>
+		<div th:replace="fragments/footer :: footer"></div>
+	</footer>
+
+</body>
+</html>

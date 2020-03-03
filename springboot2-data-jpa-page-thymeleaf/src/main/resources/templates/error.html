@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout-error">
+<head>
+	<title>error :: n.b.a.</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container-fluid" align="center">
+			<h1>Custom error page</h1>
+			
+			<div class="messages-error"> 
+				<ul>
+				 	<li><span>Status : </span><span th:text="${status}">status</span></li>
+		       		<li><span>Error : </span><span th:text="${error}">error</span></li>
+		       		<li><span>Message : </span><span th:text="${message}">message</span></li>
+		       		<li><span>Path : </span><span th:text="${path}">path</span></li>
+		       		<!-- <li><span>Trace : </span><span th:text="${trace}">trace</span></li> -->
+				</ul>
+			</div>	
+			
+			<a id="a-error" th:href="@{/}"> - Return main page - </a>
+		</div>
+	</div>
+</body>
+</html>

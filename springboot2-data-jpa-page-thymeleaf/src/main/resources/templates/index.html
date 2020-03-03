@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	data-layout-decorate="~{layouts/Layout}">
+<head>
+	<title>index</title>
+</head>
+<body>
+	<!-- body -->
+	<div layout:fragment="content">
+		<div class="container-fluid" align="center">	
+			<div class="col-lg-9" style="margin-top: 50px;">
+				<div th:if="${!players.isEmpty()}">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr align="center">
+								<th scope="col" th:text="#{table.player.id}">ID</th>
+								<th scope="col" th:text="#{table.player.name}">NAME</th>
+								<th scope="col" th:text="#{table.player.email}">E-MAIL</th>
+								<th scope="col" th:text="#{table.player.team}">TEAM</th>
+								<th scope="col" th:text="#{table.player.edit}">EDIT</th>
+								<th scope="col" th:text="#{table.player.delete}">DELETE</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr align="center" th:each="player: ${players}">
+								<td th:text="${player.id}"></td>
+								<td th:text="${player.name}"></td>
+								<td th:text="${player.email}"></td>
+								<td><a th:href="@{/players/{id}(id=${player.team.id})}"> 
+									<span class="text-success" th:text="${player.team.name}"></span>
+								</a></td>
+								<td><a th:href="@{/edit/{id}(id=${player.id})}"><i class="fa fa-edit"></i></a></td>
+								<td><a th:href="@{/delete/{id}(id=${player.id})}"><i class="fa fa-times"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+					<nav aria-label="Page navigation example">
+  						<ul class="pagination justify-content-center">
+  							<li class="page-item" th:classappend="${prev == 0 ? 'disabled' : ''}">
+      							<a class="page-link" th:href="@{|/?page=${prev}|}" aria-label="Previous">
+        							<span aria-hidden="true">&laquo;</span>
+      							</a>
+    						</li>
+    						<li class="page-item" th:each="page: ${pages}" th:classappend="${current == page} ? 'active' : ''">
+    							<a class="page-link" th:href="@{|/?page=${page}|}" th:text="${page}"></a>
+    						</li>
+    						<li class="page-item" th:classappend="${current == last ? 'disabled': ''}">
+      							<a class="page-link" th:href="@{|/?page=${next}|}" aria-label="Next">
+        							<span aria-hidden="true">&raquo;</span>
+      							</a>
+    						</li>
+  						</ul>
+					</nav>
+				</div>
+				<div th:unless="${!players.isEmpty()}">
+					<p th:text="#{no.players}">no items to show</p> 
+				</div>
+				<a th:href="@{/create}" class="a-save" id="a-save" th:text="#{link.save}">save a new user</a>
+			</div>
+		</div>
+	</div> 
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

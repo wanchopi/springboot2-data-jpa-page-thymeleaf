@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">SpringBootThymeleaf</title>
+	<meta
+		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		name="viewport" />
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="webjars/jquery-ui/1.12.1/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="webjars/jquery-ui-themes/1.12.1/blitzer/theme.css" />
+	<link rel="stylesheet" type="text/css" href="webjars/font-awesome/5.11.2/css/all.min.css" />
+	<link rel="stylesheet" type="text/css" th:href="@{/assets/css/main.css}"/>
+	<!-- fonts googleapis-->
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+	<!--header.html  that's here  -->
+	<header>
+		<div th:insert="fragments/header :: header"></div>
+		<p align="right"><span class="idiomas">
+  			<a th:href="|@{/}?idioma=es|" class="language"><span id="spanish-language">
+  				<span class="red">Es</span><span class="yellow">pa</span><span class="red">ñol </span>
+  			</span></a>
+  			<span>  </span>
+  			<a th:href="|@{/}?idioma=en|" class="language"><span id="english-language">
+  				<span class="blue"> En</span><span class="red">gl</span><span class="blue">ish</span>
+  			</span></a>
+		</span></p>
+	</header>
+	
+	<div layout:fragment="content">
+		<!-- Your Page Content Here -->
+	</div>
+
+	<!--footer.html  that's here  -->
+	<footer>
+		<div th:insert="fragments/footer :: footer"></div>
+	</footer>
+
+	<!-- JS -->
+	<script type="text/javascript" src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+  	<script type="text/javascript" src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+  	<script type="text/javascript">
+	    $(document).ready(function () {
+	    	$('.fa-times').css('color', '#ff0000');
+	    	$('.fa-edit').css('color', '#0000ff');
+	    });
+	</script>
+	<!-- autocomplete -->
+  	<script>
+		$(document).ready(function() {
+			$('#teamName').autocomplete({
+				source : '/search',
+				minLength: '2',
+				messages: {
+			        noResults: 'no results',
+			        results: ''
+			    }
+			});
+		});
+	</script>
+	<!-- blinking effect -->
+	<script>
+		$(document).ready(function blink() {
+			$('#a-save').fadeIn(750).delay(250).fadeOut(1000, blink);
+		});
+	</script>
+</body>
+</html>

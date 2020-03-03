@@ -1,0 +1,21 @@
+<header th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
+	<!-- Static navbar -->
+	<nav class="navbar navbar-light bg-light">
+		<a th:href="@{/}"><img th:alt="logo" th:src="@{/assets/images/mini-logo.png}"></a>
+  		<form class="form-inline" action="search" style="margin:auto" method="post">
+    		<input class="form-control mr-sm-2" type="text" name="keyword" 
+    		th:placeholder="${param.q}" 
+    		th:value="${param.q}"
+    		aria-label="Search" id="teamName">
+    		<input class="btn btn-outline-success my-2 my-sm-0" type="submit" th:value="#{btn.search}"></input>
+  		</form>
+	</nav>
+	<!-- header -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12" align="center">
+				<img alt="logo" th:src="@{/assets/images/main-logo.png}">
+			</div>
+		</div>
+	</div>
+</header>

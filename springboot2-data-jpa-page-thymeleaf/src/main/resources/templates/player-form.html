@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+<head>
+	<title>form :: springboot</title>
+</head>
+<body>
+	<!-- body -->
+	<div layout:fragment="content">
+		<div class="container-fluid" align="center">	<!-- main container -->
+			<div class="col-lg-9 player-form">
+				<form th:action="@{save}" th:object="${player}" method="post" id="player-form"> 
+					<!-- name -->
+					<div class="form-group">
+						<label for="name" 
+							class="col-lg-4 control-label font-weight-bold" 
+							th:text="#{form.player.name}">Name
+						</label>
+						<div class="col-lg-4">
+		 					<input type="text" 
+		 						th:field="*{name}" 
+		 						class="form-control" 
+		 						id="name" 
+		 						th:attr="placeholder=#{form.placeholder.player.name}"
+		 						required="required"/>
+		 					<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert text-danger"></span>
+						</div>
+					</div>
+					<!-- email -->
+					<div class="form-group">
+						<label for="email" 
+							class="col-lg-4 control-label font-weight-bold"
+							th:text="#{form.player.email}">Email
+						</label>
+						<div class="col-lg-4">
+		 					<input type="text" 
+		 						th:field="*{email}" 
+		 						class="form-control" 
+		 						id="email" 
+		 						th:attr="placeholder=#{form.placeholder.player.email}" 
+		 						required="required"/>
+		 					<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert text-danger"></span> 
+						</div>
+					</div>
+					<!-- team -->
+	   				<div class="form-group">
+	   					<label for="team" 
+	   						class="col-lg-4 control-label font-weight-bold"
+	   						th:text="#{form.player.team}">Team</label>
+	   					<div class="col-lg-4" align="left">
+	   						<select th:field="*{team}" class="form-control">
+	   							<option value="" th:text="#{form.select.value}"> Select team </option>
+	   							<option th:each="team : ${teams}"
+	   								th:value="${team.id}"
+	   								th:text="${team.name}"
+	   								th:selected="false"
+	   							/>
+	   						</select>
+	   						<span th:if="${#fields.hasErrors('team')}" th:errors="*{team}" class="alert text-danger"></span> 
+						</div>
+					</div>
+					<!-- Button -->
+					<div class="form-group">
+						<div class="col-lg-4" align="left">
+							<input type="submit" class="btn" th:attr="value=#{btn.save}"> 
+						</div>
+					</div>
+				</form>
+			</div>
+		</div> <!-- /main container -->
+	</div> <!-- /content -->
+</body>
+</html>

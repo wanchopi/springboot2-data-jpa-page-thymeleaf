@@ -1,0 +1,69 @@
+html { min-height: 100%; position: relative; }
+body {
+  margin: 0;
+  margin-bottom: 40px;
+  font-family: 'Raleway', sans-serif;
+}
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+  text-align: center;
+}
+.player-form { margin-top: 50px; }
+.player-form label{ text-align: left; }
+/* placeholder */
+::-webkit-input-placeholder { text-transform: capitalize; }
+::-moz-placeholder { text-transform: capitalize; } /* firefox 19+ */
+:-ms-input-placeholder { text-transform: capitalize; } /* ie */
+input:-moz-placeholder { text-transform: capitalize; }
+/* links */
+a { color: #2E2E2E; }
+.a-save {
+	font-size: x-large;
+	font-style: oblique;
+	font-weight: bold;
+	background: #F2F2F2;
+}
+.a-save:hover {
+	text-decoration: none;
+	background: #2E2E2E;
+	color: #F2F2F2;
+}
+.idiomas { margin-right: 270px; }
+.language {
+	font-style: italic;
+	text-decoration: none;
+}
+.language:hover { text-decoration: none; }
+#english-language {
+	text-decoration: line-through;
+	text-decoration-color: white;
+}
+.red { color: #B40404; }
+.yellow { color: #FFBF00; }
+.blue { color: blue; }
+.messages-error{
+	display: flex;
+  	justify-content: center;
+  	align-items: left;
+}
+.messages-error li { text-align: left; }
+#a-error {
+	color: blue;
+	font-style: italic;
+}
+#a-error:hover {
+	color: white;
+	background: blue;
+	text-decoration: none;
+}
+
+
+
+
+
+
